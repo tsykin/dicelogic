@@ -4,24 +4,23 @@ import React, { useEffect, useState } from "react";
 export default function Home() {
   const [numbers, setNumbers] = useState([]);
   const [numberCounts, setNumberCounts] = useState(new Array(11).fill(0));
-  const [lastRolledNumber, setLastRolledNumber] = useState(null);
+  const [lastRolledNumber, setLastRolledNumber] = useState("No rolls yet.");
+  // Define the probabilities for each number (2-12)
+  const probabilities = [
+    1, // 2
+    2, // 3
+    3, // 4
+    4, // 5
+    5, // 6
+    5, // 7
+    5, // 8
+    4, // 9
+    3, // 10
+    2, // 11
+    1, // 12
+  ];
 
   function weightedRandom() {
-    // Define the probabilities for each number (2-12)
-    const probabilities = [
-      1, // 2
-      2, // 3
-      3, // 4
-      4, // 5
-      5, // 6
-      6, // 7
-      5, // 8
-      4, // 9
-      3, // 10
-      2, // 11
-      1, // 12
-    ];
-
     // Calculate the total weight
     const totalWeight = probabilities.reduce((acc, val) => acc + val, 0);
 
@@ -68,6 +67,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-between py-4">
+      <h1 className="text-3xl font-bold my-5">Catan</h1>
       <div className="flex flex-col bg-blue-100 gap-1 py-4 pr-4 rounded-lg">
         {/* Bar chart */}
         {numberCounts.map((count, index) => (
@@ -86,12 +86,12 @@ export default function Home() {
         ))}
       </div>
       <div className="flex flex-col mt-2">
-        <button
+        {/* <button
           onClick={generate50Numbers}
           className="bg-blue-300 px-4 py-2 rounded m-1"
         >
           Get next 50 numbers
-        </button>
+        </button> */}
         <button
           onClick={generate1Number}
           className="bg-blue-300 px-4 py-2 rounded m-1"
@@ -120,6 +120,52 @@ export default function Home() {
             {number}
           </p>
         ))}
+      </div>
+      <div className="flex flex-col my-8 gap-2 ">
+        <p className="text-center text-xl">Probabilities</p>
+        {/* Render probabilities */}
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="px-2">Number</th>
+              <th className="px-2">Probability</th>
+            </tr>
+          </thead>
+          <tbody>
+            {probabilities.map((probability, index) => {
+              const colorClass =
+                probability === 1
+                  ? "bg-green-100"
+                  : probability === 2
+                  ? "bg-green-200"
+                  : probability === 3
+                  ? "bg-green-300"
+                  : probability === 4
+                  ? "bg-green-400"
+                  : probability === 5
+                  ? "bg-green-500"
+                  : probability === 6
+                  ? "bg-green-600"
+                  : probability === 7
+                  ? "bg-green-700"
+                  : probability === 8
+                  ? "bg-green-800"
+                  : probability === 9
+                  ? "bg-green-900"
+                  : "";
+              return (
+                <tr key={index}>
+                  <td className="px-2 text-center bg-zinc-100 border border-zinc-300">
+                    {index + 2}
+                  </td>
+                  <td className={`px-2 text-center ${colorClass}`}>
+                    {probability}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </main>
   );
