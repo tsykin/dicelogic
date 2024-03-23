@@ -108,7 +108,7 @@ export default function Home() {
           Roll dice
         </button>
       </div>
-      <div className="flex flex-col my-4">
+      <div className="flex flex-col my-4 gap-2">
         {/* Show total number of number in array */}
         <span className="text-center text-xl">
           Total amount of rolls: {numbers.length}
@@ -116,7 +116,10 @@ export default function Home() {
         {/* Show last rolled number */}
         {lastRolledNumber && (
           <span className="text-center text-xl">
-            Last rolled number: {lastRolledNumber}
+            Last rolled number:{" "}
+            <span className="text-center bg-zinc-200 rounded-lg px-4 py-2 border border-zinc-400">
+              {lastRolledNumber}
+            </span>
           </span>
         )}
       </div>
