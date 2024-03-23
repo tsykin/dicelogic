@@ -1,5 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import {
+  BsDice1,
+  BsDice4,
+  BsDice5,
+  BsDice5Fill,
+  BsDice6,
+} from "react-icons/bs";
+import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
+import { IoDiceOutline } from "react-icons/io5";
+import { LiaDiceSolid } from "react-icons/lia";
+import { RiSparkling2Fill } from "react-icons/ri";
+import { HiSparkles } from "react-icons/hi2";
+import { RiSparkling2Line } from "react-icons/ri";
+import { LuDices } from "react-icons/lu";
 
 export default function Home() {
   const [numbers, setNumbers] = useState([]);
@@ -66,9 +80,10 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-between py-4">
+    <main className="p-4">
       <h1 className="text-3xl font-bold my-5">Catan</h1>
-      <div className="flex flex-col bg-blue-100 gap-1 py-4 pr-4 rounded-lg">
+
+      <div className="flex flex-col w-full bg-blue-100 gap-1 py-4 pr-4 rounded-lg">
         {/* Bar chart */}
         {numberCounts.map((count, index) => (
           <div key={index} className="flex flex-row gap-1 items-center">
@@ -94,9 +109,10 @@ export default function Home() {
         </button> */}
         <button
           onClick={generate1Number}
-          className="bg-blue-300 px-4 py-2 rounded m-1"
+          className="flex justify-center font-medium items-center bg-blue-300 px-4 py-2 rounded gap-2 active:scale-95 transition-transform"
         >
-          Get next number
+          <LuDices className="text-xl" />
+          Roll dice
         </button>
       </div>
       <div className="flex flex-col my-4">
@@ -111,11 +127,11 @@ export default function Home() {
           </span>
         )}
       </div>
-      <div className="grid grid-cols-6 gap-4">
+      <div className="grid grid-cols-6 gap-3">
         {numbers.map((number) => (
           <p
             key={number}
-            className="text-center bg-zinc-200 rounded-lg p-1 border border-zinc-300"
+            className="text-center bg-zinc-200 rounded-lg p-2 border border-zinc-400"
           >
             {number}
           </p>
