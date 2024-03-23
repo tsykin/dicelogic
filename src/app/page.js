@@ -9,17 +9,17 @@ export default function Home() {
   function weightedRandom() {
     // Define the probabilities for each number (2-12)
     const probabilities = [
-      2.78, // 2
-      5.56, // 3
-      8.33, // 4
-      11.11, // 5
-      13.89, // 6
-      13.89, // 7
-      13.89, // 8
-      11.11, // 9
-      8.33, // 10
-      5.56, // 11
-      2.78, // 12
+      1, // 2
+      2, // 3
+      3, // 4
+      4, // 5
+      5, // 6
+      6, // 7
+      5, // 8
+      4, // 9
+      3, // 10
+      2, // 11
+      1, // 12
     ];
 
     // Calculate the total weight
@@ -68,32 +68,30 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-between py-4">
-      <div className="flex flex-col bg-blue-100 gap-1 py-4 pr-4">
+      <div className="flex flex-col bg-blue-100 gap-1 py-4 pr-4 rounded-lg">
         {/* Bar chart */}
         {numberCounts.map((count, index) => (
           <div key={index} className="flex flex-row gap-1 items-center">
             <div
               style={{
-                paddingRight: `${count * 0.75}rem`,
-                paddingLeft: "4px",
+                paddingRight: `${count * 0.5}rem`,
+                paddingLeft: "6px",
               }}
               className="bg-blue-800 flex flex-row items-center justify-start rounded-r-lg h-6"
             >
-              <span className="text-white text-xs">
-                {count > 0 && index + 2}
-              </span>
+              <span className="text-white">{count > 0 && index + 2}</span>
             </div>
             {count}
           </div>
         ))}
       </div>
       <div className="flex flex-col mt-2">
-        {/* <button
+        <button
           onClick={generate50Numbers}
           className="bg-blue-300 px-4 py-2 rounded m-1"
         >
           Get next 50 numbers
-        </button> */}
+        </button>
         <button
           onClick={generate1Number}
           className="bg-blue-300 px-4 py-2 rounded m-1"
