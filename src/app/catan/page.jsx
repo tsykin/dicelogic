@@ -109,19 +109,19 @@ export default function Home() {
         </button>
       </div>
       <div className="flex flex-col my-4 gap-2">
-        {/* Show total number of number in array */}
-        <span className="text-center text-xl">
-          Total amount of rolls: {numbers.length}
-        </span>
         {/* Show last rolled number */}
         {lastRolledNumber && (
-          <span className="text-center text-xl">
-            Last rolled number:{" "}
-            <span className="text-center bg-zinc-200 rounded-lg px-4 py-2 border border-zinc-400">
+          <div className="flex flex-row items-center gap-2 text-xl">
+            Last rolled number:
+            <span className="text-center bg-blue-800 text-blue-50 rounded-lg px-4 py-2 border border-zinc-400 text-2xl">
               {lastRolledNumber}
             </span>
-          </span>
+          </div>
         )}
+        {/* Show total number of number in array */}
+        <span className=" text-xl">
+          Total amount of rolls: {numbers.length}
+        </span>
       </div>
       <div className="grid grid-cols-6 gap-3">
         {numbers.map((number) => (
