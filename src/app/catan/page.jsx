@@ -1,18 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-  BsDice1,
-  BsDice4,
-  BsDice5,
-  BsDice5Fill,
-  BsDice6,
-} from "react-icons/bs";
-import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
-import { IoDiceOutline } from "react-icons/io5";
-import { LiaDiceSolid } from "react-icons/lia";
-import { RiSparkling2Fill } from "react-icons/ri";
-import { HiSparkles } from "react-icons/hi2";
-import { RiSparkling2Line } from "react-icons/ri";
 import { LuDices } from "react-icons/lu";
 
 export default function Home() {
@@ -64,6 +51,12 @@ export default function Home() {
   }
 
   function generate1Number() {
+    // Generate random number from 1 to 5
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
+    const audiofile = `/dice/dice-rolling-${randomNumber}.mp3`;
+    console.log(audiofile);
+    const audio = new Audio(audiofile);
+    audio.play();
     const nextNumber = weightedRandom();
     setNumbers((prevNumbers) => [...prevNumbers, nextNumber]);
     setLastRolledNumber(nextNumber);
@@ -80,10 +73,10 @@ export default function Home() {
   }
 
   return (
-    <main className="p-4">
+    <main className="max-w-5xl mx-auto  p-4 ">
       <h1 className="text-3xl font-bold my-5">Catan</h1>
 
-      <div className="flex flex-col w-full bg-blue-100 gap-1 py-4 pr-4 rounded-lg">
+      <div className="flex flex-col max-w-full bg-blue-100 gap-1 py-4 pr-4 rounded-lg">
         {/* Bar chart */}
         {numberCounts.map((count, index) => (
           <div key={index} className="flex flex-row gap-1 items-center">

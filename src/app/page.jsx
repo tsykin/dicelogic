@@ -51,6 +51,12 @@ export default function Home() {
   }
 
   function generate1Number() {
+    // Generate random number from 1 to 5
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
+    const audiofile = `/dice/dice-rolling-${randomNumber}.mp3`;
+    console.log(audiofile);
+    const audio = new Audio(audiofile);
+    audio.play();
     const nextNumber = weightedRandom();
     setNumbers((prevNumbers) => [...prevNumbers, nextNumber]);
     setLastRolledNumber(nextNumber);
@@ -67,7 +73,7 @@ export default function Home() {
   }
 
   return (
-    <main className="p-4">
+    <main className="max-w-5xl mx-auto  p-4 ">
       <h1 className="text-3xl font-bold my-5">Home</h1>
 
       <div className="flex flex-col max-w-full bg-blue-100 gap-1 py-4 pr-4 rounded-lg">

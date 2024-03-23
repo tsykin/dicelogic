@@ -5,8 +5,8 @@ import Navbar from "@/components/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "DiceLogic - Statiscally accurate dice rolls",
-  description: "Generate statistically accurate dice rolls.",
+  title: "DiceLogic - Statistically accurate dice rolls",
+  description: "Generate statistically accurate dice rolls with sound effects.",
 };
 
 export default function RootLayout({ children }) {
