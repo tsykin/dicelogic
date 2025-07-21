@@ -94,12 +94,6 @@ export default function Home() {
         ))}
       </div>
       <div className="flex flex-col mt-2">
-        {/* <button
-          onClick={generate50Numbers}
-          className="bg-blue-300 px-4 py-2 rounded m-1"
-        >
-          Get next 50 numbers
-        </button> */}
         <button
           onClick={generate1Number}
           className="flex justify-center font-medium items-center bg-blue-300 px-4 py-2 rounded gap-2 active:scale-95 transition-transform"
@@ -126,7 +120,7 @@ export default function Home() {
       <div className="grid grid-cols-6 gap-3">
         {numbers.map((number) => (
           <p
-            key={number}
+            key={number} // This causes duplicate keys when same numbers are rolled
             className="text-center bg-zinc-200 rounded-lg p-2 border border-zinc-400"
           >
             {number}
@@ -179,6 +173,12 @@ export default function Home() {
           </tbody>
         </table>
       </div>
+      <button
+        onClick={generate50Numbers}
+        className="bg-blue-300 px-4 py-2 rounded m-1"
+      >
+        Get next 50 numbers
+      </button>
     </main>
   );
 }
